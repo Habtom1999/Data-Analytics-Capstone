@@ -1,6 +1,6 @@
 # Data-Analytics-Capstone
 
-## Heart Disease Mortality Rate in the USA by counties, trends analysis and Prediction of mortality based on Past Data 
+## Heart Disease Prediction 
  By Habtom Woldu 
  North West Missouri State University 
  Email S565467@nwmissouri.edu, habtoma1999@gmail.com
