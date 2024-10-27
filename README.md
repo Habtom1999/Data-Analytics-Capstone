@@ -9,9 +9,8 @@
 The main focues of this study is to predict heart disease based on the clincal data set contianing patient attributes. By analyzing this data set, it can be possible to predict heart disease by developing machine learning model.
 
 ### Introduction 
-Heart disease and stroke are leading causes of death worldwide, and analyzing trends in mortality rates helps public health officials and healthcare providers understand the scope and scale of the problem. It enables them to identify which populations are most affected and where resources should be directed to reduce mortality.
-By understanding the demographic and geographic distribution of deaths, targeted interventions can be designed to prevent these conditions, improve treatment outcomes, and reduce healthcare costs
-This study examines county-level trends in heart disease and stroke mortality rates across the United States from 2000 to 2019.By identifying counties with the highest mortality rates and analyzing patterns across two-time intervals (2000–2010 and 2010–2019), the study aims to highlight geographic and demographic disparities in cardiovascular health outcomes. Additionally, machine learning models are implemented to predict future mortality trends, providing insights to inform targeted public health interventions and resource allocation
+
+CVascular Disease (VDs) are a group of disorders of the heart and blood vessels. According to the WHO, Heart disease is leading causes of death worldwide, taking an estimated 17.9 million lives each year. There is a massive amount of data in the healthcare industry, and processing this amount of data is a tedious task. A computer-aided system that predicts cardiac disease can save time and money.  Those at highest risk of CVDs and ensuring they receive appropriate treatment can prevent premature deaths.
 
 ### Problem Statment 
 Counties across the U.S. show significant variability in heart disease mortality rates, with disparities across race, age groups, and gender. There is a need to predict which counties are likely to experience higher mortality rates based on historical trends and demographic data.Heart disease and stroke mortality rates differ significantly across race, age groups, and gender, but the trend and extent of these disparities over time are unclea
