@@ -6,7 +6,7 @@
  Email S565467@nwmissouri.edu, habtoma1999@gmail.com
 
 ### Abstrat 
-This study examines county-level trends in heart disease and stroke mortality rates across the United States from 2000 to 2019.By identifying counties with the highest mortality rates and analyzing patterns across two time intervals (2000–2010 and 2010–2019), the study aims to highlight geographic and demographic disparities in cardiovascular health outcomes. Additionally, machine learning models are implemented to predict future mortality trends, providing insights to inform targeted public health interventions and resource allocation
+The main focues of this study is to predict heart disease based on the clincal data set contianing patient attributes. By analyzing this data set, it can be possible to predict heart disease by developing machine learning model.
 
 ### Introduction 
 Heart disease and stroke are leading causes of death worldwide, and analyzing trends in mortality rates helps public health officials and healthcare providers understand the scope and scale of the problem. It enables them to identify which populations are most affected and where resources should be directed to reduce mortality.
