@@ -1,15 +1,15 @@
 
 
 ## Setting Up Python and Installing Packages
-Step 1: Install Python 3
-Step 2: Verify that you have Python 3
+## Step 1: Install Python 3
+## Step 2: Verify that you have Python 3
 Open a new terminal window (CMD/Powershell, Terminal, xterm, etc), and run the following command: python3 --version
-Step 3: Create  Virtual Environment
+## Step 3: Create  Virtual Environment
 Run the following command to create a virtual environment
 python3 -m venv env
-Step 4: Activate the environment
+## Step 4: Activate the environment
 .venv\Scripts\activate
-Step 5: Installing packages
+## Step 5: Installing packages
 The normal way to install a package is to run the command:
 pip install <packagename>
 
