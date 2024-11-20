@@ -55,3 +55,52 @@ This dataset, obtained from Kaggle, contains 11 commonly measured features assoc
 
 ## Data Description
  The heart failure prediction data set includes key patient health attributes such as age, sex, chest pain type, resting blood pressure, cholesterol levels, fasting blood sugar, resting electrocardiogram (ECG) results, maximum heart rate achieved, exercise-induced angina, old peak (ST depression induced by exercise relative to rest), and the ST slope. With around 918 observations, this dataset provides a robust foundation for the development of predictive models
+
+## Data cleaning
+ is a fundamental step before performing analysis or building machine learning models, as it ensures that the dataset is in optimal shape for drawing meaningful insights. This process typically involves cleaning, transforming, and organizing data to make it more structured and easier to work with
+
+## Exploratory Data Analysis
+Exploratory data analysis (EDA) is an essential steps in any research analysis. The primary aim of exploratory analysis is to examine the data for distribution, outliers, and anomalies to test your hypothesis directly. It also provides tools for hypothesis generation by visualizing and understanding the data usually through a graphical representation. EDA is a fundamental early step after data collection and pre-processing where the data is simply visualized, plotted, and manipulated, without any assumptions, to help assess the quality of the data and building models. “Most EDA techniques are graphical in nature with a few quantitative techniques
+
+## Missing Values
+nalyzing missing values is an important aspect of any data analysis project.  Analysis of  missing value ratio will provide information and insights on how I can rely on the feature of the data  for subsequent analysis. The below figure depict that each data feature/column with in the data has zero null values as a result handling of missing values is not necessary for the data set.
+
+## Correlation Matrix of all features
+The correlation matrix is a widely used as a non-graphical technique in Exploratory Data Analysis (EDA). It is a powerful tool for identifying patterns, trends, and dependencies among features, enabling a deeper understanding of the data \cite{website03}. Since the Heart Failure Data Set contains both numerical and categorical variables, performing a comprehensive correlation analysis requires representing all features in a numerical format to compute their correlations. Numerical variables naturally lend themselves to correlation calculations, while categorical variables must first be transformed into numerical representations. This is typically achieved through techniques such as one-hot encoding or label encoding, which convert categorical values into numerical formats while preserving the relationships between the categories. Python provides a build in function to perform the task.
+
+## Descriptive Statistics
+Descriptive statistics is a branch of statistics that involves summarizing and organizing data so it can be easily understood and interpreted. The following table shows the descriptive statistics of the numerical columns of the Heart Failure Data set.
+## Pair Plot
+Pair plot is also another way of displaying correlation between all variables
+
+## Count of Heart Disease by Age and Sex
+Creating a count plot of heart disease by age and sex provides valuable insights into how heart disease prevalence varies across different demographics. The following bar chart displays the prevalence of heart disease among male and female and also among different age group.
+
+## Count of Heart Disease and  No Heart Disease
+Counting patients with and without heart disease provides several critical insights that are essential for clinical decision-making. The following bar graph display the count of each target class, count with heart disease and no heart disease.
+
+## Feature Selection
+Feature selection is the most important part of the data analysis process. It deals with selecting the features used in training and making predictions. Backward elimination is used for feature selection for my dataset.
+Step in backward elimination
+
+1. Fit the full model
+
+* Start with all independent variables in the data set
+
+2. Compute p-value
+
+* Check the p-value for all feature in the model.
+
+3. Identifying the feature with the highest p-value.
+
+* Find the feature with the largest p-value(in this case above 0.05
+
+4. Remove the feature with the highest p-value
+
+* if the highest p-value is exceeds the significance level, remove that feature from the model
+
+5. Repeat the process
+
+The backward elimination process retained all features in the dataset because none of the features had a p-value above the significance threshold (e.g., 0.05). This indicates that, statistically, all features have some degree of relationship with the target variable (Heart Disease).
+
+## Machine Learning and Predictive Analytics 
