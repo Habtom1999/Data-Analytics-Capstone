@@ -1,11 +1,21 @@
 from shiny import App, ui, reactive, render  # Correct imports
 import pandas as pd
 import joblib
+import os
 from sklearn.preprocessing import StandardScaler
 
 # Load pre-trained model and scaler
-model = joblib.load("heart_disease_model.pkl")  # Use relative paths
-scaler = joblib.load("scaler.pkl")
+# Load pre-trained model and scaler
+model = joblib.load(r"C:/Capstone Project/Module 1/Data-Analytics-Capstone/Shiny App/rsconnect-python/heart_disease_model.pkl")
+scaler = joblib.load(r"C:/Capstone Project/Module 1/Data-Analytics-Capstone/Shiny App/rsconnect-python\scaler.pkl")
+
+#model = joblib.load("C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\rsconnect-python\heart_disease_model.pkl")  # Use relative paths
+#scaler = joblib.load("C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\rsconnect-python\scaler.pkl")
+
+
+base_path = "C:/Capstone Project/Module 1/Data-Analytics-Capstone/Shiny App/rsconnect-python"
+model = joblib.load(os.path.join(base_path, "heart_disease_model.pkl"))
+scaler = joblib.load(os.path.join(base_path, "scaler.pkl"))
 
 # Features expected by the model
 feature_names = [
