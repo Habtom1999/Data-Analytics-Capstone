@@ -8,12 +8,12 @@ from shiny import App, ui
 
 
 # Replace with the absolute paths to your model and scaler
-model_path = "C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\heart_disease_model.pkl"
-scaler_path = "C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\scaler.pkl"
+model_path = "C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\rsconnect-python\heart_disease_model.pkl"
+scaler_path = "C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\rsconnect-python\scaler.pkl"
 
 
 # Load pre-trained model and scaler
-model = joblib.load(model_path)
+model = joblib.load(model_path)S
 scaler = joblib.load(scaler_path)
 
 # Features for the model
