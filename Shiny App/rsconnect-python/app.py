@@ -13,7 +13,7 @@ scaler_path = "C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\rs
 
 
 # Load pre-trained model and scaler
-model = joblib.load(model_path)S
+model = joblib.load(model_path)
 scaler = joblib.load(scaler_path)
 
 # Features for the model
