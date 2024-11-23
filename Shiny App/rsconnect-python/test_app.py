@@ -2,7 +2,7 @@ from shiny import App, ui
 
 app_ui = ui.page_fluid(
     ui.h2("Testing Shiny App"),
-    ui.input_text("txt", "Enter text"),
+    ui.input_text("txt", "Hello World"),
     ui.output_text("txt_out")
 )
 
