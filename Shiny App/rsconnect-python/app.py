@@ -1,16 +1,11 @@
 from shiny import App, ui, reactive
 import joblib
 import pandas as pd
-import joblib
 import os
-from shiny import App, ui
-
-
 
 # Replace with the absolute paths to your model and scaler
-model_path = "C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\rsconnect-python\heart-disease-model.pkl"
-scaler_path = "C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\rsconnect-python\scaler.pkl"
-
+model_path = r"C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\heart_disease_model.pkl"
+scaler_path = r"C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\scaler.pkl"
 
 # Load pre-trained model and scaler
 model = joblib.load(model_path)
@@ -30,33 +25,33 @@ app_ui = ui.page_fluid(
     ui.h2("Heart Disease Test"),
     ui.row(
         ui.column(4, ui.input_numeric("Age", "Age:", 20)),
-        ui.column(4, ui.input_select("Sex", "Sex:", {"M": "Male", "F": "Female"})),  # Dictionary for "Sex"
+        ui.column(4, ui.input_select("Sex", "Sex:", {"M": "Male", "F": "Female"})),
     ),
     ui.row(
         ui.column(4, ui.input_numeric("RestingBP", "Resting Blood Pressure (mm Hg):", 110)),
         ui.column(4, ui.input_numeric("Cholesterol", "Serum Cholesterol (mg/dL):", 230)),
     ),
     ui.row(
-        ui.column(4, ui.input_select("FastingBS", "Fasting Blood Sugar > 120 mg/dL:", {1: "True", 0: "False"})),  # Dictionary for "FastingBS"
+        ui.column(4, ui.input_select("FastingBS", "Fasting Blood Sugar > 120 mg/dL:", {1: "True", 0: "False"})),
         ui.column(4, ui.input_numeric("MaxHR", "Maximum Heart Rate:", 140)),
     ),
     ui.row(
         ui.column(4, ui.input_numeric("Oldpeak", "ST Depression Induced:", 2.2)),
-        ui.column(4, ui.input_select("ExerciseAngina", "Exercise-Induced Angina:", {"Y": "Yes", "N": "No"})),  # Dictionary for "ExerciseAngina"
+        ui.column(4, ui.input_select("ExerciseAngina", "Exercise-Induced Angina:", {"Y": "Yes", "N": "No"})),
     ),
     ui.row(
-        ui.column(4, ui.input_select("ChestPainType", "Chest Pain Type:", {  # Dictionary for "ChestPainType"
+        ui.column(4, ui.input_select("ChestPainType", "Chest Pain Type:", {
             "AT": "Atypical Angina", 
             "NAP": "Non-Anginal Pain", 
             "TA": "Typical Angina", 
             "Asy": "Asymptomatic"})),
-        ui.column(4, ui.input_select("RestingECG", "Resting ECG Results:", {  # Dictionary for "RestingECG"
+        ui.column(4, ui.input_select("RestingECG", "Resting ECG Results:", {
             "Normal": "Normal", 
             "ST": "ST-T Wave Abnormality", 
             "LVH": "Left Ventricular Hypertrophy"})),
     ),
     ui.row(
-        ui.column(4, ui.input_select("St_slope", "Slope of ST Segment:", {  # Dictionary for "St_slope"
+        ui.column(4, ui.input_select("St_slope", "Slope of ST Segment:", {
             "Flat": "Flat", 
             "Up": "Upward", 
             "Down": "Downward"})),
