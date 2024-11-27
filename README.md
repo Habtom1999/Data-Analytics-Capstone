@@ -108,6 +108,27 @@ Modeling is training an algorithm to predict the labels from features. When we t
 #  Logestic regression
 One of the machine learning algorithms I use for this project is logistic regression. Logistic regression is a flexible method for modeling and testing the relationships
 between one or more quantitative and/or categorical explanatory variables and one binary (i.e., two-level) categorical outcome. The two levels of the outcome can represent anything, but generically we label one outcome “success” and the other “failure”.\cite{website03}. The outcome for the heart failure data set will be whether the patient has a heart disease or not having a heart disease.
+
 ![alt text](image.png)
 # KNN 
 The second machine learning algorithm, I use for this project is KNN because the algorithm can be used to tackle classification problems.
+![alt text](image-1.png)
+![alt text](image-2.png)
+
+# Random Forest Classifer 
+The third machine learning algorithm I used for this project is random forest. Random forest is a supervised algorithm that can be used for both classification and regression problem
+![alt text](image-3.png)
+
+# Decision Tree Classifer
+The fourth and last supervised machine learning algorithm I employed to tackle the problem is the decision tree classifier. The model can be used for both classification and regression problem and also the model is very good for handling numerical and categorical variables.
+![alt text](image-5.png)
+![alt text](image-6.png)
+
+# Model Comparing
+The model was tested based on the following steps.
+
+* First, the data set was split into training 80\% and testing 20\%.
+* Then the model was trained on the training set.
+* Finally, the model was tested on the testing set and evaluated how well the model performs
+![alt text](image-7.png)
+![alt text](image-8.png)
