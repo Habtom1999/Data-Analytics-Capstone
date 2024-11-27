@@ -104,3 +104,10 @@ Step in backward elimination
 The backward elimination process retained all features in the dataset because none of the features had a p-value above the significance threshold (e.g., 0.05). This indicates that, statistically, all features have some degree of relationship with the target variable (Heart Disease).
 
 ## Machine Learning and Predictive Analytics 
+Modeling is training an algorithm to predict the labels from features. When we train an algorithm, it becomes a model. For this project, I chose four classification algorithms to train on the training data set and compare which algorithm yields the highest accuracy. The Heart Failure Data set is split into 80\% training and 20\% testing which is further passed into different classification machine learning
+#  Logestic regression
+One of the machine learning algorithms I use for this project is logistic regression. Logistic regression is a flexible method for modeling and testing the relationships
+between one or more quantitative and/or categorical explanatory variables and one binary (i.e., two-level) categorical outcome. The two levels of the outcome can represent anything, but generically we label one outcome “success” and the other “failure”.\cite{website03}. The outcome for the heart failure data set will be whether the patient has a heart disease or not having a heart disease.
+![alt text](image.png)
+# KNN 
+The second machine learning algorithm, I use for this project is KNN because the algorithm can be used to tackle classification problems.
