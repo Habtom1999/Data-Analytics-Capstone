@@ -1,24 +1,26 @@
-from shiny import App, ui, reactive, render  # Correct imports
+from shiny import App, ui, reactive
 import pandas as pd
 import joblib
 import os
-from sklearn.preprocessing import StandardScaler
+# Define base directory
+base_dir = os.path.abspath("C:/Capstone Project/Module 1/Data-Analytics-Capstone/Shiny App/rsconnect-python")
 
-# Load pre-trained model and scaler
-# Load pre-trained model and scaler
-model = joblib.load(r"C:/Capstone Project/Module 1/Data-Analytics-Capstone/Shiny App/rsconnect-python/heart_disease_model.pkl")
-scaler = joblib.load(r"C:/Capstone Project/Module 1/Data-Analytics-Capstone/Shiny App/rsconnect-python\scaler.pkl")
+# Define file paths
+heart_csv_path = os.path.join(base_dir, "C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\rsconnect-python\test_predictions_with_best_guess.csv")
+model_path = os.path.join(base_dir, "heart_disease_model.pkl")
+scaler_path = os.path.join(base_dir, "scaler.pkl")
 
-#model = joblib.load("C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\rsconnect-python\heart_disease_model.pkl")  # Use relative paths
-#scaler = joblib.load("C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\rsconnect-python\scaler.pkl")
+# Verify file paths
+print("Heart CSV Path:", heart_csv_path)
+print("Model Path:", model_path)
+print("Scaler Path:", scaler_path)
 
-
-base_path = "C:/Capstone Project/Module 1/Data-Analytics-Capstone/Shiny App/rsconnect-python"
-model = joblib.load(os.path.join(base_path, "heart_disease_model.pkl"))
-scaler = joblib.load(os.path.join(base_path, "scaler.pkl"))
+# Load model and scaler
+model = joblib.load(model_path)
+scaler = joblib.load(scaler_path)
 
 # Features expected by the model
-feature_names = [
+FEATURE_NAMES = [
     "Age", "RestingBP", "Cholesterol", "FastingBS", "MaxHR", "Oldpeak",
     "Sex_M", "ChestPainType_AT", "ChestPainType_NAP", "ChestPainType_TA", "ChestPainType_Asy",
     "RestingECG_Normal", "RestingECG_ST", "RestingECG_LVH",
@@ -49,17 +51,20 @@ app_ui = ui.page_fluid(
             "AT": "Atypical Angina",
             "NAP": "Non-Anginal Pain",
             "TA": "Typical Angina",
-            "Asy": "Asymptomatic"})),
+            "Asy": "Asymptomatic"
+        })),
         ui.column(6, ui.input_select("resting_ecg", "Resting ECG Results:", {
             "Normal": "Normal",
             "ST": "ST-T Wave Abnormality",
-            "LVH": "Left Ventricular Hypertrophy"})),
+            "LVH": "Left Ventricular Hypertrophy"
+        })),
     ),
     ui.row(
         ui.column(6, ui.input_select("st_slope", "ST Slope:", {
             "Flat": "Flat",
             "Up": "Up",
-            "Down": "Down"})),
+            "Down": "Down"
+        })),
     ),
     ui.input_action_button("predict", "Predict"),
     ui.output_text("prediction_result")
@@ -92,7 +97,7 @@ def server(input, output, session):
         }
 
         # Convert user data to a DataFrame
-        df = pd.DataFrame([user_data], columns=feature_names)
+        df = pd.DataFrame([user_data], columns=FEATURE_NAMES)
 
         # Scale the input features
         df_scaled = scaler.transform(df)
