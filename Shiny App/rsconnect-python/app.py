@@ -2,114 +2,84 @@ from shiny import App, ui, reactive
 import pandas as pd
 import joblib
 import os
-# Define base directory
-base_dir = os.path.abspath("C:/Capstone Project/Module 1/Data-Analytics-Capstone/Shiny App/rsconnect-python")
+import seaborn as sns
+from flask import Flask
+from flask import Flask, render_template, send_file, request
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+import os
 
-# Define file paths
-heart_csv_path = os.path.join(base_dir, "C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\rsconnect-python\test_predictions_with_best_guess.csv")
-model_path = os.path.join(base_dir, "heart_disease_model.pkl")
-scaler_path = os.path.join(base_dir, "scaler.pkl")
+# Initialize the Flask app
+app = Flask(__name__)
 
-# Verify file paths
-print("Heart CSV Path:", heart_csv_path)
-print("Model Path:", model_path)
-print("Scaler Path:", scaler_path)
+# Path to the predictions CSV file
+predictions_file_path = r"C:\Capstone Project\Module 1\Data-Analytics-Capstone\Shiny App\rsconnect-python\test_predictions_with_best_guess.csv"
 
-# Load model and scaler
-model = joblib.load(model_path)
-scaler = joblib.load(scaler_path)
+# Route for the homepage
+@app.route("/")
+def home():
+    # Load predictions data
+    if os.path.exists(predictions_file_path):
+        predictions_df = pd.read_csv(predictions_file_path)
 
-# Features expected by the model
-FEATURE_NAMES = [
-    "Age", "RestingBP", "Cholesterol", "FastingBS", "MaxHR", "Oldpeak",
-    "Sex_M", "ChestPainType_AT", "ChestPainType_NAP", "ChestPainType_TA", "ChestPainType_Asy",
-    "RestingECG_Normal", "RestingECG_ST", "RestingECG_LVH",
-    "ExerciseAngina_Y", "ST_Slope_Down", "ST_Slope_Flat", "ST_Slope_Up"
-]
+        # Convert DataFrame to an HTML table
+        table_html = predictions_df.to_html(classes="table table-striped", index=False)
 
-# Define the UI
-app_ui = ui.page_fluid(
-    ui.h2("Heart Disease Prediction App"),
-    ui.row(
-        ui.column(6, ui.input_numeric("age", "Age:", value=50, min=0, max=120)),
-        ui.column(6, ui.input_select("sex", "Sex:", {"M": "Male", "F": "Female"})),
-    ),
-    ui.row(
-        ui.column(6, ui.input_numeric("resting_bp", "Resting Blood Pressure (mm Hg):", value=120)),
-        ui.column(6, ui.input_numeric("cholesterol", "Cholesterol (mg/dL):", value=200)),
-    ),
-    ui.row(
-        ui.column(6, ui.input_select("fasting_bs", "Fasting Blood Sugar > 120 mg/dL:", {1: "Yes", 0: "No"})),
-        ui.column(6, ui.input_numeric("max_hr", "Max Heart Rate:", value=150)),
-    ),
-    ui.row(
-        ui.column(6, ui.input_numeric("oldpeak", "ST Depression Induced:", value=1.0)),
-        ui.column(6, ui.input_select("exercise_angina", "Exercise-Induced Angina:", {"Y": "Yes", "N": "No"})),
-    ),
-    ui.row(
-        ui.column(6, ui.input_select("chest_pain_type", "Chest Pain Type:", {
-            "AT": "Atypical Angina",
-            "NAP": "Non-Anginal Pain",
-            "TA": "Typical Angina",
-            "Asy": "Asymptomatic"
-        })),
-        ui.column(6, ui.input_select("resting_ecg", "Resting ECG Results:", {
-            "Normal": "Normal",
-            "ST": "ST-T Wave Abnormality",
-            "LVH": "Left Ventricular Hypertrophy"
-        })),
-    ),
-    ui.row(
-        ui.column(6, ui.input_select("st_slope", "ST Slope:", {
-            "Flat": "Flat",
-            "Up": "Up",
-            "Down": "Down"
-        })),
-    ),
-    ui.input_action_button("predict", "Predict"),
-    ui.output_text("prediction_result")
-)
+        return f"<h1>Heart Disease Predictions</h1>{table_html}"
+    else:
+        return "<h1>Error: Predictions file not found!</h1>"
 
-# Define server logic
-def server(input, output, session):
-    @reactive.event(input.predict)
-    def make_prediction():
-        # Prepare user inputs
-        user_data = {
-            "Age": input.age(),
-            "RestingBP": input.resting_bp(),
-            "Cholesterol": input.cholesterol(),
-            "FastingBS": int(input.fasting_bs()),
-            "MaxHR": input.max_hr(),
-            "Oldpeak": input.oldpeak(),
-            "Sex_M": 1 if input.sex() == "M" else 0,
-            "ChestPainType_AT": 1 if input.chest_pain_type() == "AT" else 0,
-            "ChestPainType_NAP": 1 if input.chest_pain_type() == "NAP" else 0,
-            "ChestPainType_TA": 1 if input.chest_pain_type() == "TA" else 0,
-            "ChestPainType_Asy": 1 if input.chest_pain_type() == "Asy" else 0,
-            "RestingECG_Normal": 1 if input.resting_ecg() == "Normal" else 0,
-            "RestingECG_ST": 1 if input.resting_ecg() == "ST" else 0,
-            "RestingECG_LVH": 1 if input.resting_ecg() == "LVH" else 0,
-            "ExerciseAngina_Y": 1 if input.exercise_angina() == "Y" else 0,
-            "ST_Slope_Down": 1 if input.st_slope() == "Down" else 0,
-            "ST_Slope_Flat": 1 if input.st_slope() == "Flat" else 0,
-            "ST_Slope_Up": 1 if input.st_slope() == "Up" else 0,
-        }
+# Route for visualization
+@app.route("/visualization")
+def visualization():
+    if os.path.exists(predictions_file_path):
+        predictions_df = pd.read_csv(predictions_file_path)
 
-        # Convert user data to a DataFrame
-        df = pd.DataFrame([user_data], columns=FEATURE_NAMES)
+        # Create a plot
+        sns.countplot(x='HeartDisease_Prediction', data=predictions_df)
+        plt.title("Distribution of Heart Disease Predictions")
+        plt.xlabel("Prediction (0 = No Heart Disease, 1 = Heart Disease)")
+        plt.ylabel("Count")
 
-        # Scale the input features
-        df_scaled = scaler.transform(df)
+        # Save the plot to a file
+        plot_file_path = "static/prediction_distribution.png"
+        plt.savefig(plot_file_path)
+        plt.close()
 
-        # Make a prediction
-        prediction = model.predict(df_scaled)[0]
-        return "Heart Disease Detected" if prediction == 1 else "No Heart Disease"
+        return f"<h1>Prediction Distribution</h1><img src='/static/prediction_distribution.png' alt='Distribution Plot'>"
+    else:
+        return "<h1>Error: Predictions file not found!</h1>"
 
-    @output
-    @reactive.render_text
-    def prediction_result():
-        return make_prediction()
+# Route for downloading the predictions file
+@app.route("/download")
+def download_file():
+    if os.path.exists(predictions_file_path):
+        return send_file(predictions_file_path, as_attachment=True)
+    else:
+        return "<h1>Error: Predictions file not found!</h1>"
 
-# Create the app
-app = App(app_ui, server)
+# Route for submitting new patient data for prediction
+@app.route("/predict", methods=['GET', 'POST'])
+def predict():
+    if request.method == 'POST':
+        # Retrieve user input from form
+        age = request.form.get('age')
+        cholesterol = request.form.get('cholesterol')
+        # Add more fields as necessary
+
+        # Here you would load the model and scaler, process the input, and return predictions
+        # For simplicity, we'll return the received input
+        return f"<h1>Prediction Result</h1><p>Age: {age}, Cholesterol: {cholesterol}</p>"
+
+    return '''
+        <h1>Enter Patient Data for Prediction</h1>
+        <form method="post">
+            Age: <input type="text" name="age"><br>
+            Cholesterol: <input type="text" name="cholesterol"><br>
+            <input type="submit" value="Predict">
+        </form>
+    '''
+
+if __name__ == "__main__":
+    app.run(debug=True)
