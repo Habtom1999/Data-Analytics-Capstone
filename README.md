@@ -132,3 +132,6 @@ The model was tested based on the following steps.
 * Finally, the model was tested on the testing set and evaluated how well the model performs
 ![alt text](image-7.png)
 ![alt text](image-8.png)
+
+# Model running on local machine
+![alt text](image-9.png)
