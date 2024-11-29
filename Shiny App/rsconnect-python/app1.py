@@ -99,3 +99,5 @@ def server(input, output, session):
             return f"Heart Disease Prediction: {'Yes' if prediction[0] == 1 else 'No'}"
 
 app = App(app_ui, server)
+
+
