@@ -3,6 +3,9 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
+import webbrowser
+webbrowser.open("http://127.0.0.1:8080")
+
 
 # Load data from CSV
 data = pd.read_csv("C:/Capstone Project/Module 1/Data-Analytics-Capstone/Shiny App/rsconnect-python/test_predictions_with_best_guess.csv")
@@ -99,5 +102,4 @@ def server(input, output, session):
             return f"Heart Disease Prediction: {'Yes' if prediction[0] == 1 else 'No'}"
 
 app = App(app_ui, server)
-
-
+if __name__ == "__main__": app.run(port=8080)

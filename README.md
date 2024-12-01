@@ -132,6 +132,8 @@ The model was tested based on the following steps.
 * Finally, the model was tested on the testing set and evaluated how well the model performs
 ![alt text](image-7.png)
 ![alt text](image-8.png)
-
+# Feature Importance 
+After running the model, the features of the dataset are sorted based on their significance. This sorting allows for a clearer understanding of which attributes most strongly influence the predictions. The following graph illustrates the importance of these features, highlighting those that contribute most significantly to the model's accuracy and performance. By visualizing the importance of each feature, we can better interpret the model's decision-making process and identify key factors that should be prioritized in further analysis and model refinement.
+![alt text](image-10.png)
 # Model running on local machine
 ![alt text](image-9.png)
