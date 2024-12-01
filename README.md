@@ -136,4 +136,5 @@ The model was tested based on the following steps.
 After running the model, the features of the dataset are sorted based on their significance. This sorting allows for a clearer understanding of which attributes most strongly influence the predictions. The following graph illustrates the importance of these features, highlighting those that contribute most significantly to the model's accuracy and performance. By visualizing the importance of each feature, we can better interpret the model's decision-making process and identify key factors that should be prioritized in further analysis and model refinement.
 ![alt text](image-10.png)
 # Model running on local machine
+The model needs to be run on the local machine before deploying to shinyapps.ioto ensure it functions correctly and produces accurate predictions. Running the model locally allows for thorough testing and debugging, ensuring that all components work seamlessly together. Once the model has been successfully executed on the local machine, the results are visualized in the following graph.
 ![alt text](image-9.png)
